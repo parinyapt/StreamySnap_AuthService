@@ -1,16 +1,17 @@
 package config
 
 import (
-	"log"
 	"os"
 
 	"github.com/joho/godotenv"
+
+	"github.com/parinyapt/StreamySnap_AuthService/logger"
 )
 
 func initializeEnvironmentFile() {
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalf("[Error]->Failed to load environment file : %s", err)
+		logger.Fatal("Failed to load environment file", logger.Field("error", err))
 	}
 }
 
@@ -25,7 +26,7 @@ func initializeEnvironmentVariableCheck() {
 
 	for _, v := range requireEnvVariableList {
 		if len([]byte(os.Getenv(v))) == 0 {
-			log.Fatalf("[Error]->Environment Variable '%s' is not set", v)
+			logger.Fatal("Environment Variable '" + v + "' is not set")
 		}
 	}
 }

@@ -1,8 +1,9 @@
 package config
 
 import (
-	// "log"
 	"os"
+
+	"github.com/parinyapt/StreamySnap_AuthService/logger"
 )
 
 func InitializeConfig() {
@@ -18,4 +19,5 @@ func InitializeConfig() {
 
 	initializeGlobalTimezone()
 	
+	logger.Info("Initialize Config Success")
 }

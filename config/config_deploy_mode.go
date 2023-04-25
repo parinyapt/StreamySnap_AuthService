@@ -2,8 +2,9 @@ package config
 
 import (
 	"flag"
-	"log"
 	"os"
+
+	"github.com/parinyapt/StreamySnap_AuthService/logger"
 )
 
 func initializeDeployModeFlag() {
@@ -12,9 +13,9 @@ func initializeDeployModeFlag() {
 
 	if (*DeployModeFlag == "development") || (*DeployModeFlag == "production") {
 		os.Setenv("DEPLOY_MODE", *DeployModeFlag)
-		log.Println("Deploy Mode : " + os.Getenv("DEPLOY_MODE"))
+		logger.Info("Deploy Mode : " + os.Getenv("DEPLOY_MODE"))
 	} else {
-		log.Fatalf("[Error]->Please set deploy mode to 'development' or 'production'")
+		logger.Fatal("Please set deploy mode to 'development' or 'production'")
 		return
 	}
 }
