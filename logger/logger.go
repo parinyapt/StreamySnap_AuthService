@@ -33,12 +33,13 @@ func InitializeLogger(deployMode string) {
 
 	config.EncoderConfig = encoderConfig
 
-	logger, err = config.Build()
+	logger, err = config.Build(zap.AddCallerSkip(1))
 	if err != nil {
 		log.Fatalf("[Error]->Failed to initialize logger : %s", err)
 	}
-}
 
+	logger.Info("Initialize Logger Success")
+}
 
 func Debug(msg string, fields ...zap.Field) {
 	logger.Debug(msg, fields...)
@@ -62,4 +63,8 @@ func Fatal(msg string, fields ...zap.Field) {
 
 func Panic(msg string, fields ...zap.Field) {
 	logger.Panic(msg, fields...)
+}
+
+func Field(key string, value interface{}) zap.Field {
+	return zap.Any(key, value)
 }
