@@ -9,11 +9,11 @@ import (
 
 var logger *zap.Logger
 
-func InitializeLogger(runMode string) {
+func InitializeLogger(deployMode string) {
 	var err error
 	var config zap.Config
 
-	if runMode == "production" {
+	if deployMode == "production" {
 		config = zap.NewProductionConfig()
 	} else {
 		config = zap.NewDevelopmentConfig()
@@ -37,7 +37,6 @@ func InitializeLogger(runMode string) {
 	if err != nil {
 		log.Fatalf("[Error]->Failed to initialize logger : %s", err)
 	}
-	
 }
 
 

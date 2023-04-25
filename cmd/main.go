@@ -1,15 +1,16 @@
 package main
 
 import (
-	// "github.com/parinyapt/StreamySnap_AuthService/config"
-	// "os"
+	"os"
 
 	"github.com/parinyapt/StreamySnap_AuthService/config"
+	"github.com/parinyapt/StreamySnap_AuthService/database"
 	"github.com/parinyapt/StreamySnap_AuthService/logger"
 )
 
 func main() {
-	logger.InitializeLogger("production")
-
 	config.InitializeConfig()
+	logger.InitializeLogger(os.Getenv("DEPLOY_MODE"))
+	database.InitializeDatabase()
+
 }
