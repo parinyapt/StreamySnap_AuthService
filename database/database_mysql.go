@@ -1,14 +1,14 @@
 package database
 
 import (
-	"log"
 	"os"
 	"time"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
 	originalmysql "github.com/go-sql-driver/mysql"
+
+	"github.com/parinyapt/StreamySnap_AuthService/logger"
 )
 
 var DB *gorm.DB
@@ -27,13 +27,13 @@ func initializeConnectMySQL() {
 	}
 	database, err := gorm.Open(mysql.Open(dsn.FormatDSN()), &gorm.Config{})
 	if err != nil {
-		log.Fatalf("[Error]->Failed to connect database : %s", err)
+		logger.Fatal("Failed to connect mysql database", logger.Field("error", err))
 	}
 
 	// database.AutoMigrate(&models.data1{})
 	// err = database.AutoMigrate(&models.Data1{}, &models.Data2{}, &models.Data3{})
 	// if err != nil {
-	// 		log.Fatalf("[Error]->Failed to AutoMigrate database : %s", err)
+	// 		logger.Error("Failed to AutoMigrate database", logger.Field("error", err))
 	// }
 
 	DB = database
