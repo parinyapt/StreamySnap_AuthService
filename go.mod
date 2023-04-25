@@ -5,7 +5,8 @@ go 1.18
 require (
 	github.com/gin-gonic/gin v1.9.0
 	github.com/joho/godotenv v1.5.1
-	github.com/parinyapt/golang_utils v0.0.0-20230418163430-b9b4d087b877
+	github.com/parinyapt/golang_utils v0.0.1
+	go.uber.org/zap v1.24.0
 )
 
 require (
@@ -26,6 +27,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
+	go.uber.org/atomic v1.7.0 // indirect
+	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/crypto v0.8.0 // indirect
 	golang.org/x/net v0.9.0 // indirect

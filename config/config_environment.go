@@ -7,14 +7,14 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func EnvironmentFileSetup() {
+func initializeEnvironmentFile() {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatalf("[Error]->Failed to load environment file : %s", err)
 	}
 }
 
-func EnvironmentVariableCheck() {
+func initializeEnvironmentVariableCheck() {
 	var requireEnvVariableList = []string{
 		"TZ",
 		"DATABASE_MYSQL_HOST",

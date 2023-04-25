@@ -1,14 +1,21 @@
 package config
 
 import (
-	"log"
+	// "log"
 	"os"
-
-	"github.com/parinyapt/golang_utils/timezone/v1"
 )
 
-func GlobalSetup() {
-	if err := PTGUtimezone.GlobalTimezoneSetup(os.Getenv("TZ")); err != nil {
-		log.Fatalf(err.Error())
+func InitializeConfig() {
+	initializeDeployModeFlag()
+
+	if os.Getenv("DEPLOY_MODE") == "development" {
+		initializeEnvironmentFile()
 	}
+	if os.Getenv("DEPLOY_MODE") == "production" {
+		initializeSetGinReleaseMode()
+	}
+	initializeEnvironmentVariableCheck()
+
+	initializeGlobalTimezone()
+	
 }

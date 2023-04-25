@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func FlagSetup() {
+func initializeDeployModeFlag() {
 	DeployModeFlag := flag.String("mode", "development", "deploy mode (development, production)")
 	flag.Parse()
 

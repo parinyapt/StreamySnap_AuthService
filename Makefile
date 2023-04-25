@@ -5,4 +5,4 @@ updateptgu:
 	go get github.com/parinyapt/golang_utils@latest
 
 run:
-	go run main.go -mode=development
+	go run cmd/main.go -mode=development
