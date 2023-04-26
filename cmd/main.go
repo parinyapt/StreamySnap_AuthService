@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	logger.InitializeLogger("production")
+	logger.InitializeLogger("development")
 	config.InitializeConfig()
 	database.InitializeDatabase()
 	routes.InitializeRoutes()
