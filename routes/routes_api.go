@@ -2,13 +2,14 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-
+	
+	controller "github.com/parinyapt/StreamySnap_AuthService/controller/handler"
 	// ApiRoutes "github.com/parinyapt/PT-Friendship_Backend/routes/api"
 )
 
 func configApiRoutes(router *gin.Engine) {
 	// No Route 404 Notfound
-	router.NoRoute()
+	router.NoRoute(controller.NoRouteHandler)
 
 	// All Route
 	// api := router.Group("/api")
