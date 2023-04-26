@@ -38,4 +38,5 @@ func initializeConnectMySQL() {
 
 	DB = database
 
+	logger.Info("Initialize MySQL Database Success")
 }
