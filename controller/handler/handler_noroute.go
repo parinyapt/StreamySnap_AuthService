@@ -11,5 +11,6 @@ func NoRouteHandler(c *gin.Context) {
 	utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
 		ResponseCode: 404,
 		Message: "Route Not Found",
+		ErrorCode: "RT404",
 	})
 }
