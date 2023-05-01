@@ -6,6 +6,7 @@ type JsonResponseStruct struct {
 }
 
 type JsonResponseStructDetail struct {
+	Timestamp int64       `json:"timestamp"`
 	Success   bool        `json:"success"`
 	Message   string      `json:"message"`
 	ErrorCode string      `json:"error_code"`
