@@ -31,7 +31,6 @@ func initializeConnectMySQL() {
 		logger.Fatal("Failed to connect mysql database", logger.Field("error", err))
 	}
 
-	// database.AutoMigrate(&modelDatabase.data1{})
 	err = database.AutoMigrate(
 		&modelDatabase.Client{}, 
 		&modelDatabase.ClientService{}, 
@@ -43,7 +42,7 @@ func initializeConnectMySQL() {
 		&modelDatabase.AuthHistory{},
 	)
 	if err != nil {
-			logger.Error("Failed to AutoMigrate database", logger.Field("error", err))
+		logger.Error("Failed to AutoMigrate database", logger.Field("error", err))
 	}
 
 	DB = database
