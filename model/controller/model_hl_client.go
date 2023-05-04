@@ -1,9 +1,14 @@
 package modelController
 
 type RequestCreateClient struct {
-	ClientName string `json:"client_name" validate:"required,max=200"`
+	ClientName string `json:"name" validate:"required,max=200"`
+}
+
+type ResponseCreateClient struct {
+	UUID       string `json:"client_id"`
+	ClientName string `json:"name"`
 }
 
 type RequestDeleteClient struct {
-	ClientUUID string `json:"client_uuid" validate:"required,uuid"`
+	ClientUUID string `json:"client_id" validate:"required,uuid"`
 }

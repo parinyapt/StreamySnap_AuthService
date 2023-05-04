@@ -19,6 +19,7 @@ func configApiRoutes(router *gin.Engine) {
 		{
 			//Public API
 			APIroutes.InitClientAPI(v1)
+			APIroutes.InitClientServiceAPI(v1)
 			// ApiRoutes.SetupTestEndpoint(v1)
 			// ApiRoutes.SetupHealthEndpoint(v1)
 			// ApiRoutes.SetupProfileEndpoint(v1)

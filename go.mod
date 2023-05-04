@@ -8,7 +8,7 @@ require (
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.5.1
-	github.com/parinyapt/golang_utils v0.0.2
+	github.com/parinyapt/golang_utils v0.0.3
 	go.uber.org/zap v1.24.0
 	golang.org/x/time v0.3.0
 	gorm.io/driver/mysql v1.5.0
