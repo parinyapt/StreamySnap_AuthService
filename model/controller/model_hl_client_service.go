@@ -3,7 +3,7 @@ package modelController
 type RequestCreateClientService struct {
 	ClientUUID         string `json:"client_id" validate:"required,uuid"`
 	ServiceName        string `json:"name" validate:"required,max=200"`
-	ServiceCallBackURL string `json:"callback_url" validate:"required,url"`
+	ServiceCallbackURL string `json:"callback_url" validate:"required,url"`
 }
 
 type ResponseCreateClientService struct {

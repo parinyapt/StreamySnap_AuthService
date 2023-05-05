@@ -23,7 +23,7 @@ type ClientService struct {
 	ClientUUID  string    `gorm:"column:client_service_client_uuid;foreignkey:ClientUUID"`
 	Name        string    `gorm:"column:client_service_name"`
 	Status      string    `gorm:"column:client_service_status;type:enum('active', 'inactive');default:active"`
-	CallBackURL string    `gorm:"column:client_service_callback_url"`
+	CallbackURL string    `gorm:"column:client_service_callback_url"`
 	CreatedAt   time.Time `gorm:"column:client_service_created_at"`
 	UpdatedAt   time.Time `gorm:"column:client_service_updated_at"`
 }

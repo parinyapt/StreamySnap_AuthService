@@ -61,7 +61,7 @@ func CreateClientService(c *gin.Context) {
 	dataCreate, err := ctrlLogic.CreateClientService(modelController.ParamLogicCreateClientService{
 		ClientUUID:         request.ClientUUID,
 		ServiceName:        request.ServiceName,
-		ServiceCallBackURL: request.ServiceCallBackURL,
+		ServiceCallbackURL: request.ServiceCallbackURL,
 	})
 	if err != nil {
 		logger.Error("[Handler][CreateClientService()]->Error CreateClientService", logger.Field("error", err.Error()))

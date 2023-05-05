@@ -1,7 +1,7 @@
 package ctrlLogic
 
 import (
-	"github.com/parinyapt/golang_utils/password/v1"
+	PTGUpassword "github.com/parinyapt/golang_utils/password/v1"
 	"github.com/pkg/errors"
 
 	"github.com/parinyapt/StreamySnap_AuthService/database"
@@ -20,11 +20,11 @@ func CreateClientService(param modelController.ParamLogicCreateClientService) (d
 	}
 
 	clientServiceData := modelDatabase.ClientService{
-		UUID: utilsUUID.GenerateUUIDv4(),
-		SecretKey: secretkeyHash,
-		ClientUUID: param.ClientUUID,
-		Name: param.ServiceName,
-		CallBackURL: param.ServiceCallBackURL,
+		UUID:        utilsUUID.GenerateUUIDv4(),
+		SecretKey:   secretkeyHash,
+		ClientUUID:  param.ClientUUID,
+		Name:        param.ServiceName,
+		CallbackURL: param.ServiceCallbackURL,
 	}
 	DBresult := database.DB.Create(&clientServiceData)
 	if DBresult.Error != nil {
@@ -34,6 +34,32 @@ func CreateClientService(param modelController.ParamLogicCreateClientService) (d
 	returnData.ServiceName = clientServiceData.Name
 	returnData.ServiceUUID = clientServiceData.UUID
 	returnData.ServiceSecretKey = secretkey
+
+	return returnData, nil
+}
+
+func FetchOneClientService(param modelController.ParamLogicFetchOneClientService) (data modelController.ReturnLogicFetchOneClientService, err error) {
+	var returnData modelController.ReturnLogicFetchOneClientService
+
+	var DBfetchData modelController.DBFetchLogicFetchOneClientService
+	DBresult := database.DB.Model(&modelDatabase.ClientService{}).Select("authservice_client_service.client_service_uuid, authservice_client_service.client_service_name, authservice_client_service.client_service_status, authservice_client_service.client_service_callback_url, authservice_client.client_uuid, authservice_client.client_name").Joins("INNER JOIN authservice_client ON authservice_client_service.client_service_client_uuid = authservice_client.client_uuid").Where("client_service_uuid = ?", param.ServiceUUID).Scan(&DBfetchData)
+	if DBresult.Error != nil {
+		return returnData, errors.Wrap(DBresult.Error, "[Logic][FetchOneClientService()]->Fail to DB query fetch one client service")
+	}
+
+	if DBresult.RowsAffected == 1 {
+		returnData.IsFound = true
+	} else {
+		returnData.IsFound = false
+		return returnData, nil
+	}
+
+	returnData.ClientServiceUUID = DBfetchData.ClientServiceUUID
+	returnData.ClientServiceName = DBfetchData.ClientServiceName
+	returnData.ClientServiceStatus = DBfetchData.ClientServiceStatus
+	returnData.ClientServiceCallbackURL = DBfetchData.ClientServiceCallbackURL
+	returnData.ClientUUID = DBfetchData.ClientUUID
+	returnData.ClientName = DBfetchData.ClientName
 
 	return returnData, nil
 }
