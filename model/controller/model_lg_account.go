@@ -18,18 +18,20 @@ type ParamLogicFetchOneAccount struct {
 }
 
 type DBFetchLogicFetchOneAccount struct {
-	AccountUUID   string
-	AccountName   string
-	AccountEmail  string
-	AccountImage  string
-	AccountStatus string
+	AccountUUID     string
+	AccountName     string
+	AccountEmail    string
+	AccountImage    string
+	AccountStatus   string
+	AccountPassword string
 }
 
 type ReturnLogicFetchOneAccount struct {
-	IsFound     bool
-	AccountUUID   string
-	AccountName   string
-	AccountEmail  string
-	AccountImage  string
-	AccountStatus string
+	IsFound         bool
+	AccountUUID     string
+	AccountName     string
+	AccountEmail    string
+	AccountImage    string
+	AccountStatus   string
+	AccountPassword string
 }

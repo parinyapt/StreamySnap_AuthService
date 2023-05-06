@@ -53,7 +53,7 @@ func CreateAccount(c *gin.Context) {
 
 	if dataFetchAccount.IsFound {
 		utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
-			ResponseCode: http.StatusConflict,
+			ResponseCode: http.StatusBadRequest,
 			Message:      "This Email is Already Exist",
 		})
 		return

@@ -39,7 +39,7 @@ func FetchOneAccount(param modelController.ParamLogicFetchOneAccount) (data mode
 	var returnData modelController.ReturnLogicFetchOneAccount
 
 	var DBfetchData modelController.DBFetchLogicFetchOneAccount
-	DBresult := database.DB.Model(&modelDatabase.Account{}).Select("account_uuid, account_name, account_email, account_image, account_status").Where(&modelDatabase.Account{UUID: param.AccountUUID}).Or(&modelDatabase.Account{Email: param.AccountEmail}).Scan(&DBfetchData)
+	DBresult := database.DB.Model(&modelDatabase.Account{}).Select("account_uuid, account_name, account_email, account_image, account_status, account_password").Where(&modelDatabase.Account{UUID: param.AccountUUID}).Or(&modelDatabase.Account{Email: param.AccountEmail}).Scan(&DBfetchData)
 	if DBresult.Error != nil {
 		return returnData, errors.Wrap(DBresult.Error, "[Logic][FetchOneAccount()]->Fail to DB query fetch one account")
 	}
@@ -55,6 +55,7 @@ func FetchOneAccount(param modelController.ParamLogicFetchOneAccount) (data mode
 	returnData.AccountEmail = DBfetchData.AccountEmail
 	returnData.AccountImage = DBfetchData.AccountImage
 	returnData.AccountStatus = DBfetchData.AccountStatus
+	returnData.AccountPassword = DBfetchData.AccountPassword
 
 	return returnData, nil
 }
