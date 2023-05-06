@@ -22,9 +22,8 @@ func configApiRoutes(router *gin.Engine) {
 			APIroutes.InitClientServiceAPI(v1)
 			APIroutes.InitAuthPageAPI(v1)
 			APIroutes.InitAccountAPI(v1)
-			// ApiRoutes.SetupTestEndpoint(v1)
-			// ApiRoutes.SetupHealthEndpoint(v1)
-			// ApiRoutes.SetupProfileEndpoint(v1)
+			APIroutes.InitAuthAPI(v1)
+			APIroutes.InitProfileAPI(v1)
 
 			//Private API with JWT Auth
 			
