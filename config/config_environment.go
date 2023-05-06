@@ -18,10 +18,17 @@ func initializeEnvironmentFile() {
 func initializeEnvironmentVariableCheck() {
 	var requireEnvVariableList = []string{
 		"TZ",
+		"APP_NAME",
+		"APP_BASE_URL",
+		"DATABASE_TABLE_PREFIX",
 		"DATABASE_MYSQL_HOST",
 		"DATABASE_MYSQL_DBNAME",
 		"DATABASE_MYSQL_USERNAME",
 		"DATABASE_MYSQL_PASSWORD",
+		"JWT_SIGN_KEY_AUTHSESSION",
+		"JWT_SIGN_KEY_TEMPORARYTOKEN",
+		"JWT_SIGN_KEY_ACCESSTOKEN",
+		"JWT_SIGN_KEY_REFRESHTOKEN",
 	}
 
 	for _, v := range requireEnvVariableList {
