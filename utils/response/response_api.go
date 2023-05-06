@@ -17,6 +17,10 @@ var ApiResponseConfigData = map[int]modelUtils.ApiResponseConfigStruct{
 		Message: "Bad Request",
 		ErrorCode: "DF400",
 	},
+	http.StatusUnauthorized: {
+		Message: "Unauthorized",
+		ErrorCode: "DF401",
+	},
 	http.StatusNotFound: {
 		Message: "Not Found",
 		ErrorCode: "DF404",
