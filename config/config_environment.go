@@ -36,4 +36,8 @@ func initializeEnvironmentVariableCheck() {
 			logger.Fatal("Environment Variable '" + v + "' is not set")
 		}
 	}
+
+	if os.Getenv("PORT") == "" {
+		os.Setenv("PORT", "80")
+	}
 }
