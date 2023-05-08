@@ -11,7 +11,7 @@ func InitAuthAPI(router *gin.RouterGroup) {
 	r := router.Group("/auth")
 	{
 		r.POST("/login", ctrlHandler.AuthLoginWithUsernamePassword)
-		r.GET("/token", ctrlHandler.AuthConvertTempTokenToRealToken)
+		r.POST("/token", ctrlHandler.AuthConvertTempTokenToRealToken)
 		
 
 		r.GET("/logout", middleware.CheckAuthAccessToken, ctrlHandler.AuthLogout)
