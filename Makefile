@@ -8,4 +8,10 @@ run:
 	go run cmd/main.go -mode=development
 
 runprod:
-	go run cmd/main.go -mode=production
+	go run cmd/main.go 
+	
+dockerbuild:
+	docker build -t streamysnap-authservice .
+
+dockerpush:
+	docker tag streamysnap-authservice:latest parinyapt/streamysnap-authservice:v2 && docker push parinyapt/streamysnap-authservice:v2
