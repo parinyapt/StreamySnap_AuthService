@@ -3,7 +3,7 @@ package modelDatabase
 import (
 	"time"
 
-	PTGUdatabase "github.com/parinyapt/StreamySnap_AuthService/utils/database"
+	utilsDatabase "github.com/parinyapt/StreamySnap_AuthService/utils/database"
 )
 
 type Client struct {
@@ -14,7 +14,7 @@ type Client struct {
 }
 
 func (Client) TableName() string {
-	return PTGUdatabase.GenerateTableName("client")
+	return utilsDatabase.GenerateTableName("client")
 }
 
 type ClientService struct {
@@ -29,7 +29,7 @@ type ClientService struct {
 }
 
 func (ClientService) TableName() string {
-	return PTGUdatabase.GenerateTableName("client_service")
+	return utilsDatabase.GenerateTableName("client_service")
 }
 
 type Account struct {
@@ -44,7 +44,7 @@ type Account struct {
 }
 
 func (Account) TableName() string {
-	return PTGUdatabase.GenerateTableName("account")
+	return utilsDatabase.GenerateTableName("account")
 }
 
 type AccountOAuth struct {
@@ -57,7 +57,7 @@ type AccountOAuth struct {
 }
 
 func (AccountOAuth) TableName() string {
-	return PTGUdatabase.GenerateTableName("account_oauth")
+	return utilsDatabase.GenerateTableName("account_oauth")
 }
 
 type OAuthProvider struct {
@@ -66,7 +66,7 @@ type OAuthProvider struct {
 }
 
 func (OAuthProvider) TableName() string {
-	return PTGUdatabase.GenerateTableName("oauth_provider")
+	return utilsDatabase.GenerateTableName("oauth_provider")
 }
 
 type AuthPageSession struct {
@@ -77,7 +77,7 @@ type AuthPageSession struct {
 }
 
 func (AuthPageSession) TableName() string {
-	return PTGUdatabase.GenerateTableName("auth_page_session")
+	return utilsDatabase.GenerateTableName("auth_page_session")
 }
 
 type AuthTemporaryToken struct {
@@ -89,7 +89,7 @@ type AuthTemporaryToken struct {
 }
 
 func (AuthTemporaryToken) TableName() string {
-	return PTGUdatabase.GenerateTableName("auth_temporary_token")
+	return utilsDatabase.GenerateTableName("auth_temporary_token")
 }
 
 type AuthHistory struct {
@@ -103,5 +103,5 @@ type AuthHistory struct {
 }
 
 func (AuthHistory) TableName() string {
-	return PTGUdatabase.GenerateTableName("auth_history")
+	return utilsDatabase.GenerateTableName("auth_history")
 }

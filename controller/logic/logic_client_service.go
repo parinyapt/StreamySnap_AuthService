@@ -8,6 +8,7 @@ import (
 	modelController "github.com/parinyapt/StreamySnap_AuthService/model/controller"
 	modelDatabase "github.com/parinyapt/StreamySnap_AuthService/model/database"
 	utilsUUID "github.com/parinyapt/StreamySnap_AuthService/utils/uuid"
+	utilsDatabase "github.com/parinyapt/StreamySnap_AuthService/utils/database"
 )
 
 func CreateClientService(param modelController.ParamLogicCreateClientService) (data modelController.ReturnLogicCreateClientService, err error) {
@@ -42,7 +43,7 @@ func FetchOneClientService(param modelController.ParamLogicFetchOneClientService
 	var returnData modelController.ReturnLogicFetchOneClientService
 
 	var DBfetchData modelController.DBFetchLogicFetchOneClientService
-	DBresult := database.DB.Model(&modelDatabase.ClientService{}).Select("authservice_client_service.client_service_uuid, authservice_client_service.client_service_name, authservice_client_service.client_service_status, authservice_client_service.client_service_callback_url, authservice_client.client_uuid, authservice_client.client_name").Joins("INNER JOIN authservice_client ON authservice_client_service.client_service_client_uuid = authservice_client.client_uuid").Where("client_service_uuid = ?", param.ServiceUUID).Scan(&DBfetchData)
+	DBresult := database.DB.Model(&modelDatabase.ClientService{}).Select("client_service_uuid, client_service_name, client_service_status, client_service_callback_url, client_uuid, client_name").Joins("INNER JOIN " + utilsDatabase.GenerateTableName("client") + " ON " + utilsDatabase.GenerateTableName("client_service") + ".client_service_client_uuid = " + utilsDatabase.GenerateTableName("client") + ".client_uuid").Where("client_service_uuid = ?", param.ServiceUUID).Scan(&DBfetchData)
 	if DBresult.Error != nil {
 		return returnData, errors.Wrap(DBresult.Error, "[Logic][FetchOneClientService()]->Fail to DB query fetch one client service")
 	}

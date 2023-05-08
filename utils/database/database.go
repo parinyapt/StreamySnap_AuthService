@@ -1,4 +1,4 @@
-package PTGUdatabase
+package utilsDatabase
 
 import "os"
 
