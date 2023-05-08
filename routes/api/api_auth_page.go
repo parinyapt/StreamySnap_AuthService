@@ -10,6 +10,6 @@ func InitAuthPageAPI(router *gin.RouterGroup) {
 	r := router.Group("/auth-page")
 	{
 		r.POST("/auth-url", ctrlHandler.GenerateAuthPageSessionURL)
-		r.GET("/auth-url", ctrlHandler.CheckAuthPageSession)
+		r.POST("/check-auth-url", ctrlHandler.CheckAuthPageSession)
 	}
 }
