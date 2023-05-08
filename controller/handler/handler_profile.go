@@ -48,11 +48,36 @@ func GetProfile(c *gin.Context) {
 		return
 	}
 
+	dataCreateTempToken, err := ctrlLogic.CreateAuthTemporaryToken(modelController.ParamLogicCreateAuthTemporaryToken{
+		AccountUUID: dataFetchAccount.AccountUUID,
+		ServiceUUID: dataFetchService.ClientServiceUUID,
+	})
+	if err != nil {
+		logger.Error("[Handler][AuthLoginWithUsernamePassword()]->Error CreateAuthTemporaryToken", logger.Field("error", err.Error()))
+		utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
+			ResponseCode: http.StatusInternalServerError,
+		})
+		return
+	}
+
+	dataGenTempToken, err := ctrlLogic.GenerateAuthTemporaryToken(modelController.ParamLogicGenerateAuthTemporaryToken{
+		TempTokenUUID: dataCreateTempToken.TempTokenUUID,
+		ExpireAt: 		dataCreateTempToken.ExpireAt,
+	})
+	if err != nil {
+		logger.Error("[Handler][AuthLoginWithUsernamePassword()]->Error GenerateAuthTemporaryToken", logger.Field("error", err.Error()))
+		utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
+			ResponseCode: http.StatusInternalServerError,
+		})
+		return
+	}
+
 	response.Account.AccountUUID = dataFetchAccount.AccountUUID
 	response.Account.AccountEmail = dataFetchAccount.AccountEmail
 	response.Account.AccountName = dataFetchAccount.AccountName
 	response.Service.ServiceUUID = dataFetchService.ClientServiceUUID
 	response.Service.ServiceName = dataFetchService.ClientServiceName
+	response.AuthCallbackURL = dataFetchService.ClientServiceCallbackURL + "?code=" + dataGenTempToken.TempToken
 
 	utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
 		ResponseCode: http.StatusOK,
