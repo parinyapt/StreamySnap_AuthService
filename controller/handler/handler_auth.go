@@ -160,6 +160,7 @@ func AuthLoginWithUsernamePassword(c *gin.Context) {
 	}
 
 	response.AuthCallbackURL = dataFetchClientService.ClientServiceCallbackURL + "?code=" + dataGenTempToken.TempToken
+	response.Code = dataGenTempToken.TempToken
 
 	utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
 		ResponseCode: http.StatusOK,

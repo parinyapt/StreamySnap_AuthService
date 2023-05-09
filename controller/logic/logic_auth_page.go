@@ -20,7 +20,7 @@ func CreateAuthPageSession(param modelController.ParamLogicCreateAuthPageSession
 	authPageSessionData := modelDatabase.AuthPageSession{
 		UUID:              utilsUUID.GenerateUUIDv4(),
 		ClientServiceUUID: param.ServiceUUID,
-		ExpiredAt:         time.Now().Add(time.Minute * 5),
+		ExpiredAt:         time.Now().Add(time.Minute * 20),
 	}
 	DBresult := database.DB.Create(&authPageSessionData)
 	if DBresult.Error != nil {

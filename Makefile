@@ -14,4 +14,4 @@ dockerbuild:
 	docker build -t streamysnap-authservice .
 
 dockerpush:
-	docker tag streamysnap-authservice:latest parinyapt/streamysnap-authservice:v2.3 && docker push parinyapt/streamysnap-authservice:v2.3
+	docker tag streamysnap-authservice:latest parinyapt/streamysnap-authservice:v2.4 && docker push parinyapt/streamysnap-authservice:v2.4

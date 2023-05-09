@@ -3,7 +3,6 @@ package modelController
 type ResponseGetProfile struct {
 	Account         ResponseGetProfileAccount `json:"account"`
 	Service         ResponseGetProfileService `json:"service"`
-	AuthCallbackURL string                    `json:"callback_url"`
 }
 
 type ResponseGetProfileAccount struct {

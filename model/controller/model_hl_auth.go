@@ -7,6 +7,7 @@ type RequestAuthLoginWithUsernamePassword struct {
 
 type ResponseAuthLoginWithUsernamePassword struct {
 	AuthCallbackURL string `json:"callback_url"`
+	Code            string `json:"code"`
 }
 
 type RequestAuthConvertTempTokenToRealToken struct {

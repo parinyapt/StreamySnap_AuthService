@@ -14,6 +14,7 @@ type RequestCheckAuthPageSessionToken struct {
 }
 
 type ResponseCheckAuthPageSessionToken struct {
-	ClientName        string `json:"client_name"`
-	ClientServiceName string `json:"service_name"`
+	ClientName               string `json:"client_name"`
+	ClientServiceName        string `json:"service_name"`
+	ClientServiceCallbackURL string `json:"service_callback_url"`
 }

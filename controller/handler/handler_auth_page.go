@@ -170,6 +170,7 @@ func CheckAuthPageSession(c *gin.Context) {
 
 	response.ClientName = fetchDataService.ClientName
 	response.ClientServiceName = fetchDataService.ClientServiceName
+	response.ClientServiceCallbackURL = fetchDataService.ClientServiceCallbackURL
 
 	utilsResponse.ApiResponse(c, modelUtils.ApiResponseStruct{
 		ResponseCode: http.StatusOK,
